@@ -9,7 +9,7 @@ Created on Tue Jan 28 19:38:15 2020
 from quality import trans
 
 def test_trans():
-    assert trans(2)=="I"
+    assert trans(1)=="I"
     assert trans(2)=="II"
     assert trans(3)=="III"
     assert trans(4)=="IV"
