@@ -6,20 +6,27 @@ Created on Tue Jan 28 19:19:17 2020
 @author: taimaame
 """
 
-def trans(one_num):
+def trans(arabic):
+    ara = [1, 4, 5, 9, 10, 40, 50, 90,
+           100, 400, 500, 900, 1000]
+    rom = ["I", "IV", "V", "IX", "X", "XL",
+           "L", "XC", "C", "CD", "D", "CM", "M"]
+    err = ''
 
-    num_list=[1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
-    str_list=["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
-    res=''
-    for i in range(len(num_list)):
-        while one_num>=num_list[i]:
-            one_num-=num_list[i]
-            res+=str_list[i]
-    return res
+    if type(arabic)!= int:
+        print("INVALID: Not an integer")
+        return err
 
+    i = (len(ara)) - 1
+    roman = ""
 
-if __name__ == '__main__':
-    
-    one_num_list=[77,66,55,8,1200,34,65,3,21,99]
-    for one_num in one_num_list:
-        print(one_num,trans(one_num))
+    while arabic:
+        div = arabic // ara[i]
+        arabic %= ara[i]
+
+        while div:
+            roman = roman + rom[i]
+            div -= 1
+        i -= 1
+
+    return roman
